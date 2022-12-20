@@ -1,43 +1,15 @@
 import React from "react";
-import logo from "../logo.webp";
+import logo from "../../logo.webp";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
-import { Link, useNavigate } from "react-router-dom";
-import { useAuthState, useAuthUpdate } from "../context/AuthContext";
-import { LoginUser } from "../api/Auth";
+import {  useNavigate } from "react-router-dom";
+import { LoginAsAdmin } from "../../api/Auth";
+import { useAuthUpdate } from "../../context/AuthContext";
 
-function Login() {
-
-  const navigate = useNavigate();
-  const notify = (msg) => toast(msg);  
+function AdminLogin() {
   const {updateAuth} = useAuthUpdate()
-  const handleSubmit = async(values)=>{
-  
-    const res = await LoginUser(values)
-    if(res.success){
-      
-      const {user,token} = res;
-      updateAuth({user,token})
-      if(user.role==='admin'){
-        return;
-      }
-      localStorage.setItem('currentUser',JSON.stringify(user))
-      localStorage.setItem('token',token.toString())
-      if(user.role==="user"){
-        navigate('/dashboard')
-      }else if(user.role==='companyuser'){
-        navigate('/companydashboard')
-      }
-
-    }else{
-      notify(res.err)
-    }
-    
-  }
-
+  const navigate = useNavigate()
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -48,27 +20,31 @@ function Login() {
       email: Yup.string().email("Invalid email").required("Required"),
     }),
 
-    onSubmit: async (values) => {
-       handleSubmit(values)
+    onSubmit: async(values) => {
+      
+      const res = await LoginAsAdmin(values)
+      if(res.success){
+      
+        const {user,token} = res;
+        updateAuth({user,token})
+        localStorage.setItem('currentUser',JSON.stringify(user))
+        localStorage.setItem('token',token.toString())
+      
+        if(user.role==='admin'){
+          navigate('/AdminDashboard')
+        }
+
+      }else{
+
+      }
+      
     },
   });
 
   return (
     <div className="w-full grid grid-cols-1 min-h-screen md:grid-cols-2 ">
-      
       <div className="col px-10 min-h-screen flex flex-col justify-center items-center">
-      <ToastContainer position="bottom-center"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-theme="light"/>
         <div className="w-full flex justify-start items-center px-20 py-10">
-      
           <img
             src={logo}
             className="w-14 bg-red-50 p-2 h-14 object-contain rounded-full"
@@ -81,10 +57,10 @@ theme="light"/>
 
         <div className="form w-9/12">
           <form onSubmit={formik.handleSubmit}>
-            <div className="mb-6 flex flex-col justify-start items-start">
+            <div class="mb-6 flex flex-col justify-start items-start">
               <label
                 htmlFor="email"
-                className="block text-gray-500 mb-2 text-sm font-medium  "
+                class="block text-gray-500 mb-2 text-sm font-medium  "
               >
                 Enter Your email
               </label>
@@ -92,7 +68,7 @@ theme="light"/>
                 id="email"
                 name="email"
                 type="email"
-                className='className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
+                className='class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
                 onChange={formik.handleChange}
                 value={formik.values.email}
               />
@@ -102,10 +78,10 @@ theme="light"/>
               )}
             </div>
 
-            <div className="mb-6 flex flex-col justify-start items-start">
+            <div class="mb-6 flex flex-col justify-start items-start">
               <label
                 htmlFor="password"
-                className="block text-gray-500 mb-2 text-sm font-medium  "
+                class="block text-gray-500 mb-2 text-sm font-medium  "
               >
                 Enter Your Password
               </label>
@@ -113,7 +89,7 @@ theme="light"/>
                 id="password"
                 name="password"
                 type="password"
-                className='className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
+                className='class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
                 onChange={formik.handleChange}
                 value={formik.values.password}
               />
@@ -129,18 +105,6 @@ theme="light"/>
               Submit
             </button>
           </form>
-          <p className="font-Poppins  ">
-            Don't Have An Account ?{" "}
-            <Link to={"/Register"}>
-              <span className="text-[#386AFD] cursor-pointer  ">Register</span>
-            </Link>{" "}
-          </p>
-          <p className="font-Poppins  ">
-           Login as   ?{" "}
-            <Link to={"/adminlogin"}>
-              <span className="text-[#386AFD] cursor-pointer  ">Admin</span>
-            </Link>{" "}
-          </p>
         </div>
       </div>
       <div className="col bg-primary login-bg"></div>
@@ -148,4 +112,4 @@ theme="light"/>
   );
 }
 
-export default Login;
+export default AdminLogin;

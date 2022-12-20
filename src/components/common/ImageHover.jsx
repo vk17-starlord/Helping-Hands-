@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ImageHover({photo,handler}) {
+function ImageHover({photo,handler,keyword='no-photo'}) {
   return (
     <div className="group flex justify-center items-center ">
     <input
@@ -11,7 +11,7 @@ function ImageHover({photo,handler}) {
     <img
       className="object-top w-24 h-24 rounded-full object-cover"
       src={
-        photo === "no-file"
+        photo === keyword
           ? "https://cdn.dribbble.com/userupload/4029627/file/original-1b483a3d2c180e428aa5fddbfc192e77.png?compress=1&resize=1504x1128"
           : photo
       }

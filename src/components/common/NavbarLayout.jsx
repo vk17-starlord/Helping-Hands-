@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { LogoutUser } from '../../api/Auth'
 import { useAuthState, useAuthUpdate } from '../../context/AuthContext'
@@ -12,14 +12,20 @@ export const NavbarLayout = ({children}) => {
    const  {updateAuth} = useAuthUpdate()
    const {user} = auth;
 
+   
+
     return (
         <div className='w-full min-h-[10vh] bg-white flex justify-between items-center'>
             <div className="container w-10/12 flex justify-between items-center min-h-[10vh] mx-auto">
+          
             <div className="flex justify-center items-center">
-            <img src={logo} className="w-12 h-12 rounded-full" alt="" />
-            <h1 className="px-5 font-bold font-Poppins text-sm ">
+             
+             <img src={logo} className=" cursor-pointer w-12 h-12 rounded-full" alt="" />
+             <h1 className="px-5 font-bold font-Poppins text-sm ">
             Helping Hands
             </h1>
+            
+        
             </div>
               
               {

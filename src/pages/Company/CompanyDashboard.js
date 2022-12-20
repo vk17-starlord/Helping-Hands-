@@ -15,17 +15,18 @@ function CompanyDashboard() {
   const [show, setshow] = useState(false);
 
   useEffect(() => {
-    console.log(user);
-   
+
     const getdata = async()=>{
       const res =await getUserCompany(user?._id);
       if(res.err){
         setshow(false)
       }else{
+        console.log(res.data)
+        setcompany(res.data)
         setshow(true)
       }
 
-      console.log(res)
+      
     }
 
     getdata()

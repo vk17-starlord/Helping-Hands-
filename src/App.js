@@ -9,7 +9,9 @@ import ProtectUser from "./guard/ProtectUser";
 import ProtectAdmin from "./guard/ProtectAdmin";
 import ProtectCompany from "./guard/ProtectCompany";
 import UserProfile from "./pages/User/UserProfile";
-
+import CreateCompany from "./pages/Company/CreateCompany";
+import AdminLogin from "./pages/Admin/AdminLogin";
+import CreateJob from "./pages/Company/CreateJob";
 function App() {
   return (
     <div className="App">
@@ -46,10 +48,14 @@ function App() {
             }
           ></Route>
 
-
-
-
-
+            <Route
+            path="/createjob"
+            element={
+              <ProtectCompany>
+                <CreateJob />
+              </ProtectCompany>
+            }
+          ></Route>
           <Route
             path="/CompanyDashboard"
             element={
@@ -58,6 +64,24 @@ function App() {
               </ProtectCompany>
             }
           ></Route>
+
+          
+        <Route
+            path="/AdminLogin"
+            element={
+                <AdminLogin />
+            }
+          ></Route>
+
+           <Route
+            path="/CreateCompany"
+            element={
+              <ProtectCompany>
+                <CreateCompany />
+              </ProtectCompany>
+            }
+          ></Route>
+
         </Routes>
       </BrowserRouter>
     </div>

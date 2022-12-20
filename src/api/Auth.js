@@ -1,5 +1,5 @@
 import axios from "axios"
-import { baseURL, getHeader, userRoute } from "./config"
+import { adminRoute, baseURL, getHeader, userRoute } from "./config"
 
 export const LoginUser = async(payload)=>{
 
@@ -15,7 +15,7 @@ export const RegisterUser = async(payload)=>{
     return await axios.post(`${baseURL}${userRoute}/register`,payload).then((res)=>{
         return res.data;
     }).catch((err)=>{
-        return {err:err.response.data.error}
+        return {err:err.response.data.data.err}
     })
 }
 
@@ -37,3 +37,10 @@ export const getUserById = async(id)=>{
     })
 }
 
+export const LoginAsAdmin = async(payload) =>{
+    return await axios.post(`${baseURL}${adminRoute}/login`,payload).then((res)=>{
+        return res.data;
+    }).catch((err)=>{
+        return {err:err.response.data.error}
+    })
+}
