@@ -9,10 +9,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <AuthContext>
+
      <CompanyContext>
      <App />
-     </CompanyContext>
-     
+     </CompanyContext> 
+       
     </AuthContext>
   
   </React.StrictMode>

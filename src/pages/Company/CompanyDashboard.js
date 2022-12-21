@@ -36,7 +36,7 @@ function CompanyDashboard() {
   return (
     <div className='w-full'>
       <CompanyNav/>
-      {show && <CompanyProfile/>}
+      {show && <CompanyProfile setshow={setshow}/>}
       {!show && <NoCompany/>}
 
     </div>

@@ -210,6 +210,7 @@ function Register() {
             >
               Submit
             </button>
+            
           </form>
           <p className="font-Poppins  ">
             Already Have An Account ?{" "}

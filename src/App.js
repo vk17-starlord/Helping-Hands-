@@ -12,6 +12,11 @@ import UserProfile from "./pages/User/UserProfile";
 import CreateCompany from "./pages/Company/CreateCompany";
 import AdminLogin from "./pages/Admin/AdminLogin";
 import CreateJob from "./pages/Company/CreateJob";
+import EditCompany from "./components/company/EditCompany";
+import JobEdit from "./pages/Jobs/JobEdit";
+import JobDetail from "./pages/Jobs/JobDetail";
+import MyApplications from "./pages/User/MyApplications";
+import AppliedUsers from "./pages/Company/AppliedUsers";
 function App() {
   return (
     <div className="App">
@@ -32,12 +37,19 @@ function App() {
             path="/user/:id"
             element={
               <ProtectUser>
-                <UserProfile/>
+                <UserProfile />
               </ProtectUser>
             }
-          ></Route> 
+          ></Route>
 
-
+          <Route
+            path="/myapplication"
+            element={
+              <ProtectUser>
+                <MyApplications />
+              </ProtectUser>
+            }
+          ></Route>
 
           <Route
             path="/AdminDashboard"
@@ -48,14 +60,42 @@ function App() {
             }
           ></Route>
 
-            <Route
-            path="/createjob"
+          <Route
+            path="/createjob/:id"
             element={
               <ProtectCompany>
                 <CreateJob />
               </ProtectCompany>
             }
           ></Route>
+
+          <Route
+            path="/:cid/:jid/appliedusers"
+            element={
+              <ProtectCompany>
+                <AppliedUsers />
+              </ProtectCompany>
+            }
+          ></Route>
+
+          <Route
+            path="/job/:id"
+            element={
+              <ProtectUser>
+                <JobDetail />
+              </ProtectUser>
+            }
+          ></Route>
+
+          <Route
+            path="/editjob/:id"
+            element={
+              <ProtectCompany>
+                <JobEdit />
+              </ProtectCompany>
+            }
+          ></Route>
+
           <Route
             path="/CompanyDashboard"
             element={
@@ -65,15 +105,9 @@ function App() {
             }
           ></Route>
 
-          
-        <Route
-            path="/AdminLogin"
-            element={
-                <AdminLogin />
-            }
-          ></Route>
+          <Route path="/AdminLogin" element={<AdminLogin />}></Route>
 
-           <Route
+          <Route
             path="/CreateCompany"
             element={
               <ProtectCompany>
@@ -82,6 +116,14 @@ function App() {
             }
           ></Route>
 
+          <Route
+            path="/EditCompany/:id"
+            element={
+              <ProtectCompany>
+                <EditCompany />
+              </ProtectCompany>
+            }
+          ></Route>
         </Routes>
       </BrowserRouter>
     </div>
