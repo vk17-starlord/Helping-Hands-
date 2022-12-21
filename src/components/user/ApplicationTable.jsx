@@ -16,7 +16,7 @@ function ApplicationTable({heading , data}) {
           <div className="col flex justify-start items-center w-full px-5">
           <div className="flex justify-start items-center">
           </div>
-          </div>
+        </div>
         </div>
 
     </div>
