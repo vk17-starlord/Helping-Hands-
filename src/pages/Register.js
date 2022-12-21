@@ -14,7 +14,7 @@ function Register() {
   const { updateAuth } = useAuthUpdate();
   const selectOptions = [
     "Locomotor Disability",
-    "Visual Impairment ",
+    "Visual Impairment",
     "Hearing Impairment",
     "Intellectual Disability",
     "Multiple Disabilities",
@@ -25,7 +25,7 @@ function Register() {
       email: "",
       password: "",
       role: "",
-      disability:""
+      disability:"Locomotor Disability"
     },
     validationSchema: Yup.object().shape({
       name: Yup.string()
@@ -39,7 +39,7 @@ function Register() {
     }),
 
     onSubmit: async (values) => {
-      console.log(values);
+      console.log(values)
       const res = await RegisterUser(values);
       if (res.success) {
         const { user, token } = res;
@@ -47,7 +47,7 @@ function Register() {
         localStorage.setItem("currentUser", JSON.stringify(user));
         localStorage.setItem("token", token.toString());
         if (user.role === "user") {
-          navigate("/dashboard");
+          navigate("/survey");
         } else if (user.role === "companyuser") {
           navigate("/companydashboard");
         }

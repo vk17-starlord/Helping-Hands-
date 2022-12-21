@@ -17,6 +17,7 @@ import JobEdit from "./pages/Jobs/JobEdit";
 import JobDetail from "./pages/Jobs/JobDetail";
 import MyApplications from "./pages/User/MyApplications";
 import AppliedUsers from "./pages/Company/AppliedUsers";
+import Questions from "./pages/User/Questions";
 function App() {
   return (
     <div className="App">
@@ -83,6 +84,15 @@ function App() {
             element={
               <ProtectUser>
                 <JobDetail />
+              </ProtectUser>
+            }
+          ></Route>
+
+          <Route
+            path="/survey"
+            element={
+              <ProtectUser>
+                <Questions />
               </ProtectUser>
             }
           ></Route>

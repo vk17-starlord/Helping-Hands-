@@ -58,3 +58,10 @@ export const createJobAPI = async(payload,cid)=>{
   }
 
   
+  export const updateJobStatus = async(status , cid , jid , id)=>{
+    return axios.put(`${baseURL}${jobRoute}/${cid}/${jid}/${id}/status`,{status:status},getHeader()).then((res)=>{
+        return res.data
+    }).catch((err)=>{
+        return {err:"error"}
+    })
+  }
