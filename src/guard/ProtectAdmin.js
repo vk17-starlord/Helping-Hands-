@@ -4,7 +4,7 @@ import { useAuthState } from '../context/AuthContext';
 
 function ProtectAdmin({children}) {
     const {auth} = useAuthState()
-
+  
     if(auth?.user?.role!=="admin" ){
        return <Navigate to="/"></Navigate>
     }

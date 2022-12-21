@@ -4,7 +4,6 @@ import UserNav from '../../components/common/UserNav'
 import ProfileCard from '../../components/user/ProfileCard'
 
 function UserProfile() {
- 
   return (
     <div className='w-full'>
         <UserNav/>
