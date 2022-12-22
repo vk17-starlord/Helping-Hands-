@@ -47,7 +47,7 @@ function Register() {
         localStorage.setItem("currentUser", JSON.stringify(user));
         localStorage.setItem("token", token.toString());
         if (user.role === "user") {
-          navigate("/dashboard");
+          navigate("/survey");
         } else if (user.role === "companyuser") {
           navigate("/companydashboard");
         }
