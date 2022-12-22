@@ -72,11 +72,6 @@ function JobDetail() {
             </div>
           </div>
 
-          
-
-          <button disabled={applied} className="my-4 py-2.5 px-10  rounded-md bg-primary text-white ">
-            View Company
-          </button>
         </div>
 
         <div className="container flex justify-start items-center mt-2 mb-5">

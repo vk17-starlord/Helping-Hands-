@@ -5,6 +5,7 @@ export const companyRoute = "/api/v1/company";
 export const adminRoute = "/api/v1/admin";
 export const jobRoute = "/api/v1/job";
 export const questionRouter ='/api/v1/question'
+export const traitRoute = '/api/v1/trait'
 export const getHeader = () => {
   const token = localStorage.getItem("token");
   return {

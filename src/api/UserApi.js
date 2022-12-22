@@ -1,5 +1,5 @@
 import axios from "axios"
-import { baseURL, getMultiFormHeader, userRoute , getHeader, questionRouter} from "./config"
+import { baseURL, getMultiFormHeader, userRoute , getHeader, questionRouter, traitRoute} from "./config"
 
 export const uploadProfile = async(file,uid)=>{
     const data ={file:file}
@@ -35,3 +35,14 @@ export const giveAnswer = async(userId,question,answer)=>{
         return res.data;
     }).catch((err)=>{return {err:"error occcurred"}}
     )}
+
+export const sendFirst = async(userid,range)=>{
+    return axios.put(`${baseURL}${traitRoute}/${userid}/${range}`,{},getHeader()).then((res)=>{
+        console.log(res)
+        return res.data;
+    }).catch((err)=>{
+        return {err:err}
+    })
+}
+
+

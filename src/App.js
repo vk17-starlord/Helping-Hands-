@@ -18,6 +18,7 @@ import JobDetail from "./pages/Jobs/JobDetail";
 import MyApplications from "./pages/User/MyApplications";
 import AppliedUsers from "./pages/Company/AppliedUsers";
 import Questions from "./pages/User/Questions";
+import SendRequest from "./pages/User/SendRequest";
 function App() {
   return (
     <div className="App">
@@ -93,6 +94,15 @@ function App() {
             element={
               <ProtectUser>
                 <Questions />
+              </ProtectUser>
+            }
+          ></Route>
+          
+          <Route
+            path="/GenerateTrait"
+            element={
+              <ProtectUser>
+                <SendRequest />
               </ProtectUser>
             }
           ></Route>
