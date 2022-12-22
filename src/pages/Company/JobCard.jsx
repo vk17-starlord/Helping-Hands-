@@ -34,11 +34,7 @@ function JobCard({job , mode="user" , onDelete }) {
             
             <div className="w-full flex justify-center items-end">
       
-           <button type="button"
-            class="text-white  mx-2    font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
-            <i class='bx bxs-edit-alt'></i>
-            </button>
-
+          
             <button type="button" onClick={()=>{
            onDelete( job?.company._id , job?._id )
             }} class="shadow-md border-2  font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 text-redlight bg-reddark">

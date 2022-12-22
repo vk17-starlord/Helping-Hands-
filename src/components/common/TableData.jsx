@@ -21,7 +21,7 @@ function TableData({ Users, setUser }) {
             <div className="col flex justify-start items-center px-7 py-2.5">
               <div className="flex w-full justify-start items-center">
                 <img
-                  className="w-10 h-10 mr-5 rounded-full object-cover object-center"
+                  className="w-10 h-10 mr-5 object-top rounded-full object-cover "
                   src={
                     user.photo === "no-file"
                       ? "https://cdn.dribbble.com/users/594316/screenshots/16557702/media/d77aa195b67473edb6c386b355126078.jpg"
@@ -30,7 +30,7 @@ function TableData({ Users, setUser }) {
                   alt=""
                 />
                 <h1 className="font-Poppins text-gray-600 font-medium text-sm">
-                  {user?.name.substr(0,13)}
+                  {user?.name}
                 </h1>
               </div>
             </div>

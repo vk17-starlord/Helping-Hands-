@@ -24,7 +24,7 @@ function MyApplications() {
     <div className='w-full'>
         <UserNav/>
 
-         { User?.applied.length>0 && <ApplicationTable data={User?.applied} heading={["Company","Role","Salary","Status"]}/> }        
+         { User?.applied.length>0 && <ApplicationTable data={User?.applied} heading={["Role","Salary","Job Mode","Status","View Job"]}/> }        
 
     </div>
   )
